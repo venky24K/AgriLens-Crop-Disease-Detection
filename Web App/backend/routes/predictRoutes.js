@@ -21,8 +21,11 @@ router.post('/', protect, upload.single('image'), async (req, res) => {
     const form = new FormData();
     form.append('file', fs.createReadStream(req.file.path));
 
-    // 2. Call FastAPI Hybrid Model (Port 8000)
-    const response = await axios.post('http://localhost:8000/predict', form, {
+    // 2. Call FastAPI Hybrid Model (Render URL or Localhost)
+    const FASTAPI_URL = process.env.FASTAPI_URL || 'http://localhost:8000';
+    console.log(`Calling AI Engine at: ${FASTAPI_URL}/predict`);
+
+    const response = await axios.post(`${FASTAPI_URL}/predict`, form, {
       headers: {
         ...form.getHeaders(),
       },
