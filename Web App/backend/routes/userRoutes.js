@@ -2,6 +2,30 @@ const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/authMiddleware');
 const User = require('../models/User');
+const Prediction = require('../models/Prediction');
+
+// @desc    Get user stats
+// @route   GET /api/user/stats
+// @access  Private
+router.get('/stats', protect, async (req, res) => {
+  try {
+    const totalScans = await Prediction.countDocuments({ userId: req.user._id });
+    const healthyScans = await Prediction.countDocuments({ 
+      userId: req.user._id, 
+      status: 'Healthy' 
+    });
+    
+    const healthScore = totalScans > 0 ? Math.round((healthyScans / totalScans) * 100) : 0;
+    
+    res.json({
+      totalScans,
+      healthScore: `${healthScore}%`,
+      memberSince: req.user.createdAt
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 // @desc    Get user profile
 // @route   GET /api/user/profile
@@ -16,6 +40,8 @@ router.get('/profile', protect, async (req, res) => {
         name: user.name,
         email: user.email,
         profilePic: user.profilePic,
+        bio: user.bio,
+        location: user.location,
         createdAt: user.createdAt,
       });
     } else {
@@ -35,7 +61,8 @@ router.put('/profile', protect, async (req, res) => {
 
     if (user) {
       user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
+      user.bio = req.body.bio !== undefined ? req.body.bio : user.bio;
+      user.location = req.body.location !== undefined ? req.body.location : user.location;
       
       const updatedUser = await user.save();
 
@@ -44,6 +71,8 @@ router.put('/profile', protect, async (req, res) => {
         name: updatedUser.name,
         email: updatedUser.email,
         profilePic: updatedUser.profilePic,
+        bio: updatedUser.bio,
+        location: updatedUser.location,
         createdAt: updatedUser.createdAt,
       });
     } else {

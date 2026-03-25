@@ -31,6 +31,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
     },
+    bio: {
+      type: String,
+      default: '',
+    },
+    location: {
+      type: String,
+      default: '',
+    },
   },
   {
     timestamps: true,

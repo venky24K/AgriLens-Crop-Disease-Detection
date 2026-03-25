@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { User, Mail, Calendar, Shield, Settings, LogOut, Camera, Award, Save, X } from 'lucide-react';
 import GlassCard from '../../components/GlassCard';
@@ -13,9 +13,35 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: user?.name || '',
-    email: user?.email || ''
+    email: user?.email || '',
+    bio: user?.bio || '',
+    location: user?.location || ''
   });
   const [isSaving, setIsSaving] = useState(false);
+  const [userStats, setUserStats] = useState({
+    totalScans: 0,
+    healthScore: '0%',
+    memberSince: ''
+  });
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      if (!user?.token) return;
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        };
+        const { data } = await axios.get('http://localhost:5000/api/user/stats', config);
+        setUserStats(data);
+      } catch (error) {
+        console.error('Failed to fetch stats:', error);
+      }
+    };
+
+    fetchStats();
+  }, [user]);
 
   if (!user) return null;
 
@@ -27,7 +53,11 @@ const Profile = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.put('http://localhost:5000/api/user/profile', formData, config);
+      const { data } = await axios.put('http://localhost:5000/api/user/profile', {
+        name: formData.name,
+        bio: formData.bio,
+        location: formData.location
+      }, config);
       updateUser(data);
       showToast('Profile updated successfully!', 'success');
       setIsEditing(false);
@@ -39,9 +69,9 @@ const Profile = () => {
   };
 
   const stats = [
-    { label: 'Total Scans', value: '24', icon: <Camera size={18} className="text-blue-500" /> },
-    { label: 'Health Score', value: '92%', icon: <Award size={18} className="text-accentGradientStart" /> },
-    { label: 'Member Since', value: 'Mar 2026', icon: <Calendar size={18} className="text-purple-500" /> },
+    { label: 'Total Scans', value: userStats.totalScans, icon: <Camera size={18} className="text-blue-500" /> },
+    { label: 'Health Score', value: userStats.healthScore, icon: <Award size={18} className="text-accentGradientStart" /> },
+    { label: 'Member Since', value: userStats.memberSince ? new Date(userStats.memberSince).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : '...', icon: <Calendar size={18} className="text-purple-500" /> },
   ];
 
   return (
@@ -69,14 +99,43 @@ const Profile = () => {
             </div>
             
             {isEditing ? (
-              <input 
-                type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-white/30 dark:bg-black/30 border border-white/20 rounded-xl px-4 py-2 text-center font-black focus:outline-none focus:border-accentGradientStart"
-              />
+              <div className="space-y-4">
+                <input 
+                  type="text"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full bg-white/30 dark:bg-black/30 border border-white/20 rounded-xl px-4 py-2 text-center font-black focus:outline-none focus:border-accentGradientStart"
+                />
+                <textarea
+                  placeholder="Tell us about yourself..."
+                  value={formData.bio}
+                  onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+                  rows="3"
+                  className="w-full bg-white/30 dark:bg-black/30 border border-white/20 rounded-xl px-4 py-2 text-sm font-medium focus:outline-none focus:border-accentGradientStart resize-none"
+                />
+                <input 
+                  type="text"
+                  placeholder="Your Location (e.g. AP, India)"
+                  value={formData.location}
+                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                  className="w-full bg-white/30 dark:bg-black/30 border border-white/20 rounded-xl px-4 py-2 text-sm font-bold focus:outline-none focus:border-accentGradientStart"
+                />
+              </div>
             ) : (
-              <h2 className="text-2xl font-black">{user.name}</h2>
+              <div className="space-y-2">
+                <h2 className="text-2xl font-black">{user.name}</h2>
+                {user.location && (
+                  <p className="text-xs font-bold text-accentGradientStart flex items-center justify-center gap-1 opacity-80 uppercase tracking-tighter">
+                    <Shield size={10} /> {user.location}
+                  </p>
+                )}
+                {user.bio ? (
+                  <p className="text-sm text-teal-900/60 dark:text-white/60 font-medium italic mt-2 px-4">"{user.bio}"</p>
+                ) : (
+                   <p className="text-sm text-teal-900/40 dark:text-white/40 font-medium italic mt-2">No bio added yet.</p>
+                )}
+              </div>
             )}
             <p className="text-teal-900/40 dark:text-white/40 text-sm font-bold uppercase tracking-widest mt-1">Verified Member</p>
             
@@ -145,26 +204,17 @@ const Profile = () => {
                   <div className="p-3 rounded-xl bg-teal-100 dark:bg-teal-900/30 text-teal-600">
                     <Mail size={20} />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-xs font-bold text-teal-900/40 dark:text-white/40 uppercase tracking-widest">Email Address</p>
-                    {isEditing ? (
-                      <input 
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-transparent border-b border-accentGradientStart focus:outline-none font-bold py-1"
-                      />
-                    ) : (
-                      <p className="font-bold">{user.email}</p>
-                    )}
-                  </div>
+                <div className="flex-1">
+                  <p className="text-xs font-bold text-teal-900/40 dark:text-white/40 uppercase tracking-widest">Email Address</p>
+                  <p className="font-bold opacity-70 cursor-not-allowed">{user.email}</p>
+                  {isEditing && (
+                    <p className="text-[10px] text-teal-900/40 font-bold mt-1">Email cannot be changed.</p>
+                  )}
                 </div>
-                {!isEditing && (
-                  <button onClick={() => setIsEditing(true)} className="text-sm font-bold text-accentGradientStart hover:underline ml-4">Change</button>
-                )}
               </div>
             </div>
-          </GlassCard>
+          </div>
+        </GlassCard>
         </div>
       </div>
     </div>
