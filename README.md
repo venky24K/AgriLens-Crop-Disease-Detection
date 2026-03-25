@@ -67,16 +67,4 @@ cd "Web App/frontend"
 npm run dev
 ```
 
----
-
-## 📊 Methodology Reference
-This project implements the methodology proposed in:
-> **Lakhani, S. (2025).** *Revolutionizing Smart Farming: Quantum Computing Applications in Plant Disease Detection.* IJCPDM, 6(2), 191-199.
-
----
-
-## 👥 Team
-- **Balaji Mallepalli**
-- [Name 2] · [Name 3] · [Name 4] · [Name 5]
-
 *AgriLens: Empowering farmers with the precision of quantum computing.* 🌾⚛️✨
