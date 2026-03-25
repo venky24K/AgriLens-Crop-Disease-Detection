@@ -1,0 +1,411 @@
+====================================================================================================
+  QuantumCrop — Benchmark Report
+  Hybrid VQC vs Baseline 2 vs Random Forest vs Logistic Regression
+====================================================================================================
+
+  Metric            Hybrid VQC         Baseline 2      Random Forest Logistic Regression
+----------------------------------------------------------------------------------------------------
+  Accuracy              0.2151             0.2151             0.5793             0.2458
+  Precision             0.1007             0.1007             0.5008             0.1299
+  Recall                0.1107             0.1107             0.4412             0.1423
+  Macro F1              0.0772             0.0772             0.4477             0.1221
+====================================================================================================
+
+Hybrid VQC Classification Report:
+                                             precision    recall  f1-score   support
+
+                american_bollworm_on_cotton       0.00      0.00      0.00        10
+                      anthracnose_on_cotton       0.00      0.00      0.00         5
+                           apple_apple_scab       0.14      0.09      0.11       402
+                            apple_black_rot       0.06      0.04      0.05       384
+                     apple_cedar_apple_rust       0.00      0.00      0.00       349
+                              apple_healthy       0.24      0.59      0.34       401
+                                  army_worm       0.00      0.00      0.00        76
+                 bacterial_blight_in_cotton       0.00      0.00      0.00        85
+                   becterial_blight_in_rice       0.49      0.16      0.25       323
+                 bell_pepper_bacterial_spot       0.00      0.00      0.00       385
+                        bell_pepper_healthy       0.00      0.00      0.00       433
+                          blueberry_healthy       0.15      0.17      0.16       367
+                                  brownspot       0.27      0.72      0.40       312
+                             cherry_healthy       0.35      0.02      0.03       338
+              cherry_including_sour_healthy       0.00      0.00      0.00       365
+       cherry_including_sour_powdery_mildew       0.00      0.00      0.00       353
+                      cherry_powdery_mildew       0.00      0.00      0.00       351
+                                common_rust       0.42      0.94      0.58       887
+                        corn_gray_leaf_spot       0.00      0.00      0.00       226
+                               corn_healthy       0.00      0.00      0.00       219
+            corn_maize_cercospora_leaf_spot       0.38      0.00      0.01       663
+                         corn_maize_healthy       0.25      0.68      0.36       394
+            corn_maize_northern_leaf_blight       0.00      0.00      0.00       390
+                  corn_northern_leaf_blight       0.00      0.00      0.00       207
+                               cotton_aphid       0.00      0.00      0.00        47
+                           cotton_mealy_bug       0.00      0.00      0.00        14
+                            cotton_whitefly       0.00      0.00      0.00         9
+                                  flag_smut       0.00      0.00      0.00        40
+                            grape_black_rot       0.00      0.00      0.00       371
+                   grape_esca_black_measles       0.29      0.36      0.32       377
+                              grape_healthy       0.00      0.00      0.00       319
+                          grape_leaf_blight       0.21      0.51      0.30       688
+                             healthy_cotton       0.00      0.00      0.00        88
+                              healthy_maize       0.00      0.00      0.00       228
+                              healthy_wheat       0.00      0.00      0.00        42
+                          ipynb_checkpoints       0.00      0.00      0.00         1
+                                  leaf_curl       0.14      0.67      0.23      1547
+                                  leaf_smut       0.00      0.00      0.00         8
+                              maize_ear_rot       0.00      0.00      0.00        21
+                        maize_fall_armyworm       0.00      0.00      0.00        27
+                           maize_stem_borer       0.00      0.00      0.00        23
+                           mosaic_sugarcane       0.00      0.00      0.00       103
+       orange_haunglongbing_citrus_greening       0.29      0.33      0.31       386
+                       peach_bacterial_spot       0.14      0.02      0.03       374
+                              peach_healthy       0.28      0.81      0.42       338
+                 pepper_bell_bacterial_spot       0.00      0.00      0.00       367
+                        pepper_bell_healthy       0.12      0.04      0.06       411
+                    pink_bollworm_in_cotton       0.00      0.00      0.00         4
+                        potato_early_blight       0.00      0.00      0.00       389
+                             potato_healthy       0.00      0.00      0.00       359
+                         potato_late_blight       0.00      0.00      0.00       421
+                          raspberry_healthy       1.00      0.01      0.01       352
+                             red_cotton_bug       0.00      0.00      0.00        17
+                           redrot_sugarcane       0.00      0.00      0.00       102
+                          redrust_sugarcane       0.00      0.00      0.00        14
+                                 rice_blast       0.30      0.03      0.05       303
+                            rice_brown_spot       0.43      0.27      0.33       119
+                               rice_healthy       0.27      0.83      0.41       302
+                            rice_leaf_blast       0.27      0.03      0.06       179
+                            rice_neck_blast       0.00      0.00      0.00       181
+                            soybean_healthy       0.20      0.44      0.27       443
+                      squash_powdery_mildew       0.18      0.37      0.24       360
+                         strawberry_healthy       0.00      0.00      0.00       339
+                     strawberry_leaf_scorch       0.28      0.10      0.15       358
+                 sugarcane_bacterial_blight       0.00      0.00      0.00        21
+                          sugarcane_healthy       0.00      0.00      0.00        92
+                          sugarcane_red_rot       0.00      0.00      0.00        19
+                           thirps_on_cotton       0.00      0.00      0.00        10
+                      tomato_bacterial_spot       0.29      0.51      0.37       401
+                        tomato_early_blight       0.05      0.01      0.01       373
+                             tomato_healthy       0.00      0.00      0.00       409
+                         tomato_late_blight       0.00      0.00      0.00       390
+                           tomato_leaf_mold       0.00      0.00      0.00       385
+                  tomato_septoria_leaf_spot       0.00      0.00      0.00       363
+tomato_spider_mites_two_spotted_spider_mite       0.17      0.27      0.21       364
+                         tomato_target_spot       0.13      0.11      0.12       324
+                 tomato_tomato_mosaic_virus       0.15      0.11      0.12       337
+                                     tungro       0.00      0.00      0.00       264
+                                wheat_aphid       0.00      0.00      0.00        33
+                           wheat_black_rust       0.00      0.00      0.00        44
+                      wheat_brown_leaf_rust       0.00      0.00      0.00        12
+                           wheat_brown_rust       0.25      0.52      0.34       171
+                              wheat_healthy       0.30      0.24      0.26       199
+                          wheat_leaf_blight       0.00      0.00      0.00        26
+                                 wheat_mite       0.00      0.00      0.00        44
+                       wheat_powdery_mildew       0.00      0.00      0.00        32
+                                 wheat_scab       0.00      0.00      0.00        15
+                             wheat_stem_fly       0.00      0.00      0.00        35
+                          wheat_yellow_rust       0.69      0.06      0.11       193
+                                       wilt       0.00      0.00      0.00        80
+                      yellow_rust_sugarcane       0.00      0.00      0.00        93
+
+                                   accuracy                           0.22     22725
+                                  macro avg       0.10      0.11      0.08     22725
+                               weighted avg       0.15      0.22      0.13     22725
+
+
+Baseline 2 Classification Report:
+                                             precision    recall  f1-score   support
+
+                american_bollworm_on_cotton       0.00      0.00      0.00        10
+                      anthracnose_on_cotton       0.00      0.00      0.00         5
+                           apple_apple_scab       0.14      0.09      0.11       402
+                            apple_black_rot       0.06      0.04      0.05       384
+                     apple_cedar_apple_rust       0.00      0.00      0.00       349
+                              apple_healthy       0.24      0.59      0.34       401
+                                  army_worm       0.00      0.00      0.00        76
+                 bacterial_blight_in_cotton       0.00      0.00      0.00        85
+                   becterial_blight_in_rice       0.49      0.16      0.25       323
+                 bell_pepper_bacterial_spot       0.00      0.00      0.00       385
+                        bell_pepper_healthy       0.00      0.00      0.00       433
+                          blueberry_healthy       0.15      0.17      0.16       367
+                                  brownspot       0.27      0.72      0.40       312
+                             cherry_healthy       0.35      0.02      0.03       338
+              cherry_including_sour_healthy       0.00      0.00      0.00       365
+       cherry_including_sour_powdery_mildew       0.00      0.00      0.00       353
+                      cherry_powdery_mildew       0.00      0.00      0.00       351
+                                common_rust       0.42      0.94      0.58       887
+                        corn_gray_leaf_spot       0.00      0.00      0.00       226
+                               corn_healthy       0.00      0.00      0.00       219
+            corn_maize_cercospora_leaf_spot       0.38      0.00      0.01       663
+                         corn_maize_healthy       0.25      0.68      0.36       394
+            corn_maize_northern_leaf_blight       0.00      0.00      0.00       390
+                  corn_northern_leaf_blight       0.00      0.00      0.00       207
+                               cotton_aphid       0.00      0.00      0.00        47
+                           cotton_mealy_bug       0.00      0.00      0.00        14
+                            cotton_whitefly       0.00      0.00      0.00         9
+                                  flag_smut       0.00      0.00      0.00        40
+                            grape_black_rot       0.00      0.00      0.00       371
+                   grape_esca_black_measles       0.29      0.36      0.32       377
+                              grape_healthy       0.00      0.00      0.00       319
+                          grape_leaf_blight       0.21      0.51      0.30       688
+                             healthy_cotton       0.00      0.00      0.00        88
+                              healthy_maize       0.00      0.00      0.00       228
+                              healthy_wheat       0.00      0.00      0.00        42
+                          ipynb_checkpoints       0.00      0.00      0.00         1
+                                  leaf_curl       0.14      0.67      0.23      1547
+                                  leaf_smut       0.00      0.00      0.00         8
+                              maize_ear_rot       0.00      0.00      0.00        21
+                        maize_fall_armyworm       0.00      0.00      0.00        27
+                           maize_stem_borer       0.00      0.00      0.00        23
+                           mosaic_sugarcane       0.00      0.00      0.00       103
+       orange_haunglongbing_citrus_greening       0.29      0.33      0.31       386
+                       peach_bacterial_spot       0.14      0.02      0.03       374
+                              peach_healthy       0.28      0.81      0.42       338
+                 pepper_bell_bacterial_spot       0.00      0.00      0.00       367
+                        pepper_bell_healthy       0.12      0.04      0.06       411
+                    pink_bollworm_in_cotton       0.00      0.00      0.00         4
+                        potato_early_blight       0.00      0.00      0.00       389
+                             potato_healthy       0.00      0.00      0.00       359
+                         potato_late_blight       0.00      0.00      0.00       421
+                          raspberry_healthy       1.00      0.01      0.01       352
+                             red_cotton_bug       0.00      0.00      0.00        17
+                           redrot_sugarcane       0.00      0.00      0.00       102
+                          redrust_sugarcane       0.00      0.00      0.00        14
+                                 rice_blast       0.30      0.03      0.05       303
+                            rice_brown_spot       0.43      0.27      0.33       119
+                               rice_healthy       0.27      0.83      0.41       302
+                            rice_leaf_blast       0.27      0.03      0.06       179
+                            rice_neck_blast       0.00      0.00      0.00       181
+                            soybean_healthy       0.20      0.44      0.27       443
+                      squash_powdery_mildew       0.18      0.37      0.24       360
+                         strawberry_healthy       0.00      0.00      0.00       339
+                     strawberry_leaf_scorch       0.28      0.10      0.15       358
+                 sugarcane_bacterial_blight       0.00      0.00      0.00        21
+                          sugarcane_healthy       0.00      0.00      0.00        92
+                          sugarcane_red_rot       0.00      0.00      0.00        19
+                           thirps_on_cotton       0.00      0.00      0.00        10
+                      tomato_bacterial_spot       0.29      0.51      0.37       401
+                        tomato_early_blight       0.05      0.01      0.01       373
+                             tomato_healthy       0.00      0.00      0.00       409
+                         tomato_late_blight       0.00      0.00      0.00       390
+                           tomato_leaf_mold       0.00      0.00      0.00       385
+                  tomato_septoria_leaf_spot       0.00      0.00      0.00       363
+tomato_spider_mites_two_spotted_spider_mite       0.17      0.27      0.21       364
+                         tomato_target_spot       0.13      0.11      0.12       324
+                 tomato_tomato_mosaic_virus       0.15      0.11      0.12       337
+                                     tungro       0.00      0.00      0.00       264
+                                wheat_aphid       0.00      0.00      0.00        33
+                           wheat_black_rust       0.00      0.00      0.00        44
+                      wheat_brown_leaf_rust       0.00      0.00      0.00        12
+                           wheat_brown_rust       0.25      0.52      0.34       171
+                              wheat_healthy       0.30      0.24      0.26       199
+                          wheat_leaf_blight       0.00      0.00      0.00        26
+                                 wheat_mite       0.00      0.00      0.00        44
+                       wheat_powdery_mildew       0.00      0.00      0.00        32
+                                 wheat_scab       0.00      0.00      0.00        15
+                             wheat_stem_fly       0.00      0.00      0.00        35
+                          wheat_yellow_rust       0.69      0.06      0.11       193
+                                       wilt       0.00      0.00      0.00        80
+                      yellow_rust_sugarcane       0.00      0.00      0.00        93
+
+                                   accuracy                           0.22     22725
+                                  macro avg       0.10      0.11      0.08     22725
+                               weighted avg       0.15      0.22      0.13     22725
+
+
+Random Forest Classification Report:
+                                             precision    recall  f1-score   support
+
+                american_bollworm_on_cotton       0.60      0.30      0.40        10
+                      anthracnose_on_cotton       0.00      0.00      0.00         5
+                           apple_apple_scab       0.65      0.65      0.65       402
+                            apple_black_rot       0.66      0.70      0.68       384
+                     apple_cedar_apple_rust       0.72      0.68      0.70       349
+                              apple_healthy       0.69      0.73      0.71       401
+                                  army_worm       0.78      0.74      0.76        76
+                 bacterial_blight_in_cotton       0.84      0.87      0.86        85
+                   becterial_blight_in_rice       0.95      1.00      0.97       323
+                 bell_pepper_bacterial_spot       0.15      0.16      0.15       385
+                        bell_pepper_healthy       0.06      0.05      0.06       433
+                          blueberry_healthy       0.54      0.47      0.50       367
+                                  brownspot       0.93      0.99      0.96       312
+                             cherry_healthy       0.12      0.14      0.13       338
+              cherry_including_sour_healthy       0.15      0.15      0.15       365
+       cherry_including_sour_powdery_mildew       0.13      0.12      0.13       353
+                      cherry_powdery_mildew       0.13      0.13      0.13       351
+                                common_rust       0.92      0.97      0.94       887
+                        corn_gray_leaf_spot       0.31      0.27      0.29       226
+                               corn_healthy       0.01      0.01      0.01       219
+            corn_maize_cercospora_leaf_spot       0.65      0.71      0.68       663
+                         corn_maize_healthy       0.21      0.19      0.20       394
+            corn_maize_northern_leaf_blight       0.46      0.54      0.50       390
+                  corn_northern_leaf_blight       0.00      0.00      0.00       207
+                               cotton_aphid       0.63      0.55      0.59        47
+                           cotton_mealy_bug       0.25      0.07      0.11        14
+                            cotton_whitefly       0.50      0.11      0.18         9
+                                  flag_smut       0.81      0.65      0.72        40
+                            grape_black_rot       0.66      0.62      0.64       371
+                   grape_esca_black_measles       0.67      0.72      0.70       377
+                              grape_healthy       0.69      0.84      0.76       319
+                          grape_leaf_blight       0.76      0.97      0.85       688
+                             healthy_cotton       0.93      0.88      0.90        88
+                              healthy_maize       0.00      0.00      0.00       228
+                              healthy_wheat       0.33      0.05      0.08        42
+                          ipynb_checkpoints       0.00      0.00      0.00         1
+                                  leaf_curl       0.69      0.79      0.74      1547
+                                  leaf_smut       0.33      0.25      0.29         8
+                              maize_ear_rot       0.36      0.19      0.25        21
+                        maize_fall_armyworm       0.50      0.04      0.07        27
+                           maize_stem_borer       0.00      0.00      0.00        23
+                           mosaic_sugarcane       0.63      0.38      0.47       103
+       orange_haunglongbing_citrus_greening       0.68      0.57      0.62       386
+                       peach_bacterial_spot       0.45      0.25      0.32       374
+                              peach_healthy       0.78      0.94      0.86       338
+                 pepper_bell_bacterial_spot       0.13      0.13      0.13       367
+                        pepper_bell_healthy       0.07      0.07      0.07       411
+                    pink_bollworm_in_cotton       0.00      0.00      0.00         4
+                        potato_early_blight       0.68      0.84      0.75       389
+                             potato_healthy       0.74      0.85      0.79       359
+                         potato_late_blight       0.74      0.79      0.76       421
+                          raspberry_healthy       0.71      0.77      0.74       352
+                             red_cotton_bug       0.50      0.06      0.11        17
+                           redrot_sugarcane       0.34      0.11      0.16       102
+                          redrust_sugarcane       0.87      0.93      0.90        14
+                                 rice_blast       0.96      1.00      0.98       303
+                            rice_brown_spot       0.54      0.50      0.52       119
+                               rice_healthy       0.67      0.77      0.72       302
+                            rice_leaf_blast       0.37      0.27      0.31       179
+                            rice_neck_blast       0.76      0.83      0.79       181
+                            soybean_healthy       0.56      0.56      0.56       443
+                      squash_powdery_mildew       0.59      0.52      0.55       360
+                         strawberry_healthy       0.72      0.86      0.78       339
+                     strawberry_leaf_scorch       0.70      0.78      0.74       358
+                 sugarcane_bacterial_blight       0.00      0.00      0.00        21
+                          sugarcane_healthy       0.52      0.28      0.37        92
+                          sugarcane_red_rot       0.00      0.00      0.00        19
+                           thirps_on_cotton       0.50      0.10      0.17        10
+                      tomato_bacterial_spot       0.56      0.59      0.57       401
+                        tomato_early_blight       0.75      0.73      0.74       373
+                             tomato_healthy       0.58      0.58      0.58       409
+                         tomato_late_blight       0.50      0.29      0.37       390
+                           tomato_leaf_mold       0.75      0.81      0.78       385
+                  tomato_septoria_leaf_spot       0.29      0.13      0.18       363
+tomato_spider_mites_two_spotted_spider_mite       0.58      0.55      0.56       364
+                         tomato_target_spot       0.42      0.46      0.44       324
+                 tomato_tomato_mosaic_virus       0.69      0.82      0.75       337
+                                     tungro       0.92      1.00      0.96       264
+                                wheat_aphid       0.40      0.12      0.19        33
+                           wheat_black_rust       0.17      0.02      0.04        44
+                      wheat_brown_leaf_rust       0.00      0.00      0.00        12
+                           wheat_brown_rust       0.58      0.51      0.54       171
+                              wheat_healthy       0.68      0.70      0.69       199
+                          wheat_leaf_blight       0.20      0.04      0.06        26
+                                 wheat_mite       0.60      0.07      0.12        44
+                       wheat_powdery_mildew       0.71      0.16      0.26        32
+                                 wheat_scab       0.67      0.13      0.22        15
+                             wheat_stem_fly       0.58      0.20      0.30        35
+                          wheat_yellow_rust       0.66      0.76      0.71       193
+                                       wilt       0.85      0.90      0.87        80
+                      yellow_rust_sugarcane       0.41      0.14      0.21        93
+
+                                   accuracy                           0.58     22725
+                                  macro avg       0.50      0.44      0.45     22725
+                               weighted avg       0.56      0.58      0.57     22725
+
+
+Logistic Regression Classification Report:
+                                             precision    recall  f1-score   support
+
+                american_bollworm_on_cotton       0.00      0.00      0.00        10
+                      anthracnose_on_cotton       0.00      0.00      0.00         5
+                           apple_apple_scab       0.23      0.17      0.20       402
+                            apple_black_rot       0.10      0.14      0.11       384
+                     apple_cedar_apple_rust       0.00      0.00      0.00       349
+                              apple_healthy       0.39      0.35      0.37       401
+                                  army_worm       0.15      0.08      0.10        76
+                 bacterial_blight_in_cotton       0.00      0.00      0.00        85
+                   becterial_blight_in_rice       0.37      0.42      0.40       323
+                 bell_pepper_bacterial_spot       0.20      0.00      0.01       385
+                        bell_pepper_healthy       0.15      0.03      0.04       433
+                          blueberry_healthy       0.16      0.19      0.17       367
+                                  brownspot       0.35      0.59      0.44       312
+                             cherry_healthy       0.12      0.18      0.15       338
+              cherry_including_sour_healthy       0.18      0.09      0.12       365
+       cherry_including_sour_powdery_mildew       0.00      0.00      0.00       353
+                      cherry_powdery_mildew       0.00      0.00      0.00       351
+                                common_rust       0.62      0.91      0.74       887
+                        corn_gray_leaf_spot       0.00      0.00      0.00       226
+                               corn_healthy       0.00      0.00      0.00       219
+            corn_maize_cercospora_leaf_spot       0.10      0.02      0.04       663
+                         corn_maize_healthy       0.27      0.60      0.37       394
+            corn_maize_northern_leaf_blight       0.22      0.02      0.04       390
+                  corn_northern_leaf_blight       0.00      0.00      0.00       207
+                               cotton_aphid       0.00      0.00      0.00        47
+                           cotton_mealy_bug       0.00      0.00      0.00        14
+                            cotton_whitefly       0.00      0.00      0.00         9
+                                  flag_smut       0.00      0.00      0.00        40
+                            grape_black_rot       0.12      0.04      0.05       371
+                   grape_esca_black_measles       0.23      0.53      0.32       377
+                              grape_healthy       0.26      0.02      0.04       319
+                          grape_leaf_blight       0.32      0.48      0.38       688
+                             healthy_cotton       0.00      0.00      0.00        88
+                              healthy_maize       0.00      0.00      0.00       228
+                              healthy_wheat       0.00      0.00      0.00        42
+                          ipynb_checkpoints       0.00      0.00      0.00         1
+                                  leaf_curl       0.17      0.54      0.25      1547
+                                  leaf_smut       0.00      0.00      0.00         8
+                              maize_ear_rot       0.12      0.05      0.07        21
+                        maize_fall_armyworm       0.00      0.00      0.00        27
+                           maize_stem_borer       0.00      0.00      0.00        23
+                           mosaic_sugarcane       0.00      0.00      0.00       103
+       orange_haunglongbing_citrus_greening       0.42      0.38      0.40       386
+                       peach_bacterial_spot       0.21      0.16      0.18       374
+                              peach_healthy       0.46      0.72      0.56       338
+                 pepper_bell_bacterial_spot       0.14      0.10      0.12       367
+                        pepper_bell_healthy       0.12      0.16      0.14       411
+                    pink_bollworm_in_cotton       0.00      0.00      0.00         4
+                        potato_early_blight       0.20      0.17      0.18       389
+                             potato_healthy       0.07      0.02      0.03       359
+                         potato_late_blight       0.04      0.01      0.02       421
+                          raspberry_healthy       0.21      0.08      0.12       352
+                             red_cotton_bug       0.00      0.00      0.00        17
+                           redrot_sugarcane       0.00      0.00      0.00       102
+                          redrust_sugarcane       0.00      0.00      0.00        14
+                                 rice_blast       0.30      0.08      0.13       303
+                            rice_brown_spot       0.33      0.36      0.34       119
+                               rice_healthy       0.38      0.72      0.49       302
+                            rice_leaf_blast       0.23      0.09      0.13       179
+                            rice_neck_blast       0.00      0.00      0.00       181
+                            soybean_healthy       0.25      0.47      0.33       443
+                      squash_powdery_mildew       0.23      0.47      0.31       360
+                         strawberry_healthy       0.17      0.19      0.18       339
+                     strawberry_leaf_scorch       0.22      0.23      0.23       358
+                 sugarcane_bacterial_blight       0.00      0.00      0.00        21
+                          sugarcane_healthy       0.00      0.00      0.00        92
+                          sugarcane_red_rot       0.00      0.00      0.00        19
+                           thirps_on_cotton       0.00      0.00      0.00        10
+                      tomato_bacterial_spot       0.25      0.58      0.35       401
+                        tomato_early_blight       0.11      0.06      0.07       373
+                             tomato_healthy       0.10      0.09      0.10       409
+                         tomato_late_blight       0.00      0.00      0.00       390
+                           tomato_leaf_mold       0.29      0.12      0.17       385
+                  tomato_septoria_leaf_spot       0.06      0.02      0.03       363
+tomato_spider_mites_two_spotted_spider_mite       0.16      0.37      0.23       364
+                         tomato_target_spot       0.14      0.25      0.18       324
+                 tomato_tomato_mosaic_virus       0.23      0.27      0.25       337
+                                     tungro       0.00      0.00      0.00       264
+                                wheat_aphid       0.00      0.00      0.00        33
+                           wheat_black_rust       0.00      0.00      0.00        44
+                      wheat_brown_leaf_rust       0.00      0.00      0.00        12
+                           wheat_brown_rust       0.47      0.48      0.47       171
+                              wheat_healthy       0.32      0.35      0.34       199
+                          wheat_leaf_blight       0.00      0.00      0.00        26
+                                 wheat_mite       0.00      0.00      0.00        44
+                       wheat_powdery_mildew       0.00      0.00      0.00        32
+                                 wheat_scab       0.00      0.00      0.00        15
+                             wheat_stem_fly       0.00      0.00      0.00        35
+                          wheat_yellow_rust       0.60      0.44      0.51       193
+                                       wilt       0.25      0.06      0.10        80
+                      yellow_rust_sugarcane       0.00      0.00      0.00        93
+
+                                   accuracy                           0.25     22725
+                                  macro avg       0.13      0.14      0.12     22725
+                               weighted avg       0.20      0.25      0.20     22725

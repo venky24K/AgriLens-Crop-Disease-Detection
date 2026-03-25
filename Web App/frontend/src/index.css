@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pastelGreen: #E6F4EA;
+  --color-softLavender: #EAE6F8;
+  --color-lightTeal: #DFF5F2;
+  --color-accentGradientStart: #4ADE80;
+  --color-accentGradientEnd: #3B82F6;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply transition-colors duration-300 bg-pastelGreen dark:bg-[#0a0a0c] text-teal-900 dark:text-gray-100 min-h-screen font-sans;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-3xl shadow-xl overflow-hidden;
+  }
+
+  .neumorph-button {
+    @apply shadow-[5px_5px_10px_#d1dec7,-5px_-5px_10px_#ffffff] dark:shadow-[5px_5px_10px_#050505,-5px_-5px_10px_#151515] hover:scale-105 active:scale-95 transition-all duration-300;
+  }
+
+  .accent-gradient {
+    @apply bg-gradient-to-br from-accentGradientStart to-accentGradientEnd;
+  }
+
+  .glowing-hover {
+    @apply hover:shadow-[0_0_20px_rgba(74,222,128,0.5)] transition-all duration-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4ade8055;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4ade80aa;
+}

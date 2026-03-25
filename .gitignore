@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data (large files — commit only processed CSVs, not raw images)
+data/raw/
+data/processed/*.npy
+
+# Outputs (models, plots) — commit benchmark reports only
+outputs/models/
+outputs/plots/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / config overrides
+*.env
+secrets.yaml
+
+# Dependencies
+node_modules/
+Web App/frontend/node_modules/
+Web App/backend/node_modules/
