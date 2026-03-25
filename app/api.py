@@ -1,9 +1,16 @@
 import sys
 import os
+
+# 🚀 Render Deployment Optimization: Suppress Matplotlib font cache building
+# This must happen before any other imports that might trigger matplotlib
+os.environ['MPLBACKEND'] = 'Agg'
+os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
+
 from pathlib import Path
 import tempfile
-import torch
-import numpy as np
+from pathlib import Path
+import tempfile
+# Heavy imports (torch, numpy) moved inside functions
 from PIL import Image
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -58,6 +65,7 @@ def get_model():
     CFG.CLASSES = INFERENCE_CLASSES 
     CFG.NUM_CLASSES = len(INFERENCE_CLASSES)
     
+    import torch
     model = HybridQuantumClassifier()
     model.load_state_dict(torch.load(model_path, map_location=CFG.DEVICE))
     model.eval()
@@ -174,6 +182,8 @@ async def predict(file: UploadFile = File(...)):
             tmp_path = Path(tmp.name)
 
         # Run inference
+        import torch
+        import numpy as np
         x_tensor = preprocess_single_image(tmp_path).to(CFG.DEVICE)
         probs = model.predict_proba(x_tensor).squeeze().cpu().detach().numpy()
         pred_idx = int(np.argmax(probs))

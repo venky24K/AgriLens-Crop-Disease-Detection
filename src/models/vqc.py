@@ -18,9 +18,9 @@ Key upgrades over basic VQC:
 
 import numpy as np
 import pennylane as qml
-import torch
-import torch.nn as nn
-import torchvision.models as models
+import numpy as np
+import pennylane as qml
+# From local imports below
 from utils.config import CFG
 
 
@@ -60,6 +60,8 @@ class HybridQuantumClassifier(nn.Module):
     """
 
     def __init__(self):
+        import torch.nn as nn
+        import torchvision.models as models
         super().__init__()
 
         # Initialize PennyLane device here to avoid import-time delays
