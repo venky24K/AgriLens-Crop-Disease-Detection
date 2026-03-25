@@ -6,7 +6,7 @@ import GlassCard from '../../components/GlassCard';
 import GlassButton from '../../components/GlassButton';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -35,7 +35,7 @@ const LoginSignup = () => {
 
     try {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
-      const response = await axios.post(`http://localhost:5000${endpoint}`, formData);
+      const response = await api.post(endpoint, formData);
       
       login(response.data);
       addToast(isLogin ? 'Successfully logged in!' : 'Account created successfully!', 'success');

@@ -5,7 +5,7 @@ import GlassCard from '../../components/GlassCard';
 import GlassButton from '../../components/GlassButton';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const Profile = () => {
   const { user, logout, updateUser } = useAuth();
@@ -33,7 +33,7 @@ const Profile = () => {
             Authorization: `Bearer ${user.token}`,
           },
         };
-        const { data } = await axios.get('http://localhost:5000/api/user/stats', config);
+        const { data } = await api.get('/api/user/stats', config);
         setUserStats(data);
       } catch (error) {
         console.error('Failed to fetch stats:', error);
@@ -53,7 +53,7 @@ const Profile = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.put('http://localhost:5000/api/user/profile', {
+      const { data } = await api.put('/api/user/profile', {
         name: formData.name,
         bio: formData.bio,
         location: formData.location

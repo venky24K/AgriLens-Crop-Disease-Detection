@@ -4,7 +4,7 @@ import { Search, Filter, Calendar, ChevronRight, FileText, Download, Trash2, Loa
 import GlassCard from '../../components/GlassCard';
 import GlassButton from '../../components/GlassButton';
 import { useAuth } from '../../context/AuthContext';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const History = () => {
   const [history, setHistory] = useState([]);
@@ -21,8 +21,8 @@ const History = () => {
             Authorization: `Bearer ${user.token}`,
           },
         };
-        const response = await axios.get('http://localhost:5000/api/history', config);
-        setHistory(response.data);
+        const { data } = await api.get('/api/history', config);
+        setHistory(data);
       } catch (err) {
         console.error('Failed to fetch history:', err);
       } finally {
