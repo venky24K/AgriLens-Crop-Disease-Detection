@@ -1,0 +1,47 @@
+services:
+  # 1. Inference Engine (FastAPI)
+  - type: web
+    name: agrilens-inference
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.api:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      # Required for matplotlib rendering optimization without UI
+      - key: MPLBACKEND
+        value: Agg
+      - key: MPLCONFIGDIR
+        value: /tmp/matplotlib
+
+  # 2. Web Backend (Node.js)
+  - type: web
+    name: agrilens-backend
+    env: node
+    rootDir: "Web App/backend"
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: INFERENCE_URL
+        fromService:
+          type: web
+          name: agrilens-inference
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+
+  # 3. Web Frontend (Static Site / Node)
+  - type: web
+    name: agrilens-frontend
+    env: static
+    rootDir: "Web App/frontend"
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "./dist"
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: agrilens-backend
+          envVarKey: RENDER_EXTERNAL_URL

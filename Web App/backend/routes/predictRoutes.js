@@ -22,7 +22,8 @@ router.post('/', protect, upload.single('image'), async (req, res) => {
     form.append('file', fs.createReadStream(req.file.path));
 
     // 2. Call FastAPI Hybrid Model (Port 8000)
-    const response = await axios.post('http://localhost:8000/predict', form, {
+    const inferenceUrl = process.env.INFERENCE_URL || 'http://localhost:8000';
+    const response = await axios.post(`${inferenceUrl}/predict`, form, {
       headers: {
         ...form.getHeaders(),
       },
